@@ -1,14 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ui.fruitdetail.FruitDetailFragment">
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    
+    <data>
+        <variable name="viewModel" type="com.david.fructus.viewmodel.FruitListVM"/>
+    </data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            android:layout_height="wrap_content"
+            tools:context=".ui.fruitdetail.FruitDetailFragment"
+            android:id="@+id/frameLayout2">
 
-</FrameLayout>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/image_container"
+                app:colorName="@{viewModel.selectedFruit.image}"
+                android:background="@drawable/blueberry_gradient">
+
+                <ImageView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/blueberry"
+                    app:loadImageByName="@{viewModel.selectedFruit.image}"
+                    android:id="@+id/fruit_image"/>
+
+
+            </LinearLayout>
+            <TextView
+                android:text="@{viewModel.selectedFruit.title}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fruit_name"
+                app:textColorByName="@{viewModel.selectedFruit.title}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_container" android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp" android:textSize="20sp" android:fontFamily="sans-serif"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/fruit_head_line"
+                style="@style/bodyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@{viewModel.selectedFruit.headline}"
+
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/fruit_name"
+                app:layout_constraintTop_toBottomOf="@+id/fruit_name" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{@string/learn_more(viewModel.selectedFruit.title)}"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/fruit_head_line"
+                app:layout_constraintStart_toStartOf="@+id/fruit_head_line"
+                app:layout_constraintTop_toBottomOf="@+id/fruit_head_line"
+                app:textColorByName="@{viewModel.selectedFruit.title}" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/bodyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@{viewModel.selectedFruit.description}"
+                android:textSize="16sp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@id/textView5" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</layout>

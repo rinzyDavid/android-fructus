@@ -7,9 +7,13 @@ import com.david.fructus.data.model.Fruit
 import com.david.fructus.databinding.LayoutFruitListItemBinding
 
 class FruitListAdapter(
-    private val fruits:List<Fruit>
+    private val fruits:List<Fruit>,
+    private val listener:ClickListener
 ):RecyclerView.Adapter<FruitListAdapter.CustomViewHolder>() {
 
+    interface ClickListener{
+        fun onFruitSelected(fruit: Fruit)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
 
@@ -24,6 +28,9 @@ class FruitListAdapter(
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
        holder.bind(fruits[position])
+        holder.itemView.setOnClickListener {
+            listener.onFruitSelected(fruits[position])
+        }
     }
 
     override fun getItemCount(): Int {

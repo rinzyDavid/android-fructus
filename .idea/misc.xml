@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/blueberry_gradient.xml" value="0.2361111111111111" />
+        <entry key="app/src/main/res/drawable/lemon_gradient.xml" value="0.2361111111111111" />
+        <entry key="app/src/main/res/drawable/lime_gradient.xml" value="0.2361111111111111" />
+        <entry key="app/src/main/res/drawable/mango_gradient.xml" value="0.2361111111111111" />
+        <entry key="app/src/main/res/drawable/plum_gradient.xml" value="0.2361111111111111" />
+        <entry key="app/src/main/res/drawable/strawberry_gradient.xml" value="0.2361111111111111" />
         <entry key="app/src/main/res/layout/activity_fructus_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_fruit_detail.xml" value="0.2390625" />
         <entry key="app/src/main/res/layout/fragment_fruit_list.xml" value="0.2390625" />
         <entry key="app/src/main/res/layout/layout_fruit_list_item.xml" value="0.165" />
       </map>

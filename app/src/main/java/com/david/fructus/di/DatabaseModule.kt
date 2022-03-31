@@ -10,6 +10,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * This module helps to create, inject database and dao instances
+ */
 
 @Module
 @InstallIn(SingletonComponent::class)

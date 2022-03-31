@@ -4,6 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Entity class to map with our database column
+ */
 @Entity(tableName = "fruits")
 data class Fruit(
     @ColumnInfo(name = "title")

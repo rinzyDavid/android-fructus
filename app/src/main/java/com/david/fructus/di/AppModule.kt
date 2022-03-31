@@ -7,6 +7,10 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
+/**
+ * This creates and binds the right repository implementation
+ */
+
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class AppModule {

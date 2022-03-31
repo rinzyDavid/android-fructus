@@ -4,6 +4,21 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/app_navigation"
             app:startDestination="@id/fruitListFragment">
 
-    <fragment android:id="@+id/fruitListFragment" android:name="com.david.fructus.ui.fruitlist.FruitListFragment"
-              android:label="fragment_fruit_list" tools:layout="@layout/fragment_fruit_list"/>
+    <fragment
+        android:id="@+id/fruitListFragment"
+        android:name="com.david.fructus.ui.fruitlist.FruitListFragment"
+        android:label="Fruits"
+        tools:layout="@layout/fragment_fruit_list">
+        <action
+            android:id="@+id/action_fruitListFragment_to_fruitDetailFragment"
+            app:destination="@id/fruitDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/fruitDetailFragment"
+        android:name="com.david.fructus.ui.fruitdetail.FruitDetailFragment"
+        android:label="Fruit Details" />
 </navigation>

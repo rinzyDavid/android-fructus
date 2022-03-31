@@ -8,6 +8,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Qualifier
 
+/**
+ * This helps to inject the right coroutine dispatcher to the repository
+ */
+
 @Module
 @InstallIn(SingletonComponent::class)
 object DispatcherModule {

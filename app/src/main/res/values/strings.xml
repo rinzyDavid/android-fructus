@@ -2,4 +2,5 @@
     <string name="app_name">Fructus</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="learn_more">Learn more about %1$s</string>
 </resources>

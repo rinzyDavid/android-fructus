@@ -13,44 +13,27 @@ import com.google.gson.stream.JsonReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+/**
+ * A worker that will help populate the database on app first installation.
+ */
 class SeedDatabaseWorker(
     context: Context,
     workerParams: WorkerParameters
 ) : CoroutineWorker(context, workerParams) {
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {
-            val filename = KEY_FILENAME
-
-            println("seeding started ....")
          applicationContext.resources.openRawResource(R.raw.fruits)
              .use {inputStream ->
                  JsonReader(inputStream.reader()).use { jsonReader ->
                      val fruitType = object : TypeToken<List<Fruit>>() {}.type
-                     val plantList: List<Fruit> = Gson().fromJson(jsonReader, fruitType)
+                     val fruitList: List<Fruit> = Gson().fromJson(jsonReader, fruitType)
 
                      val database = FruitDatabase.getInstance(applicationContext)
-                     database.fruitDao().insertAll(plantList)
-                     println("Data seeded .......")
-
+                     database.fruitDao().insertAll(fruitList)
                      Result.success()
                  }
              }
 
-            /*
-            applicationContext.assets.open(filename).use { inputStream ->
-                JsonReader(inputStream.reader()).use { jsonReader ->
-                    val fruitType = object : TypeToken<List<Fruit>>() {}.type
-                    val plantList: List<Fruit> = Gson().fromJson(jsonReader, fruitType)
-
-                    val database = FruitDatabase.getInstance(applicationContext)
-                    database.fruitDao().insertAll(plantList)
-                    println("Data seeded .......")
-
-                    Result.success()
-                }
-            }
-
-             */
         } catch (ex: Exception) {
             Log.e(TAG, "Error seeding database", ex)
             Result.failure()
@@ -59,7 +42,6 @@ class SeedDatabaseWorker(
 
     companion object {
         private const val TAG = "SeedDatabaseWorker"
-        const val KEY_FILENAME = "fruits.json"
     }
 
 }
